@@ -175,11 +175,12 @@ export default function FaceCompanionPanel() {
         : failed
           ? "concerned"
           : interpretation
-            ? interpretation.healthy === false
-              ? "alert"
-              : interpretation.healthy === true
-                ? "happy"
-                : "curious"
+            ? (interpretation.mood ??
+              (interpretation.healthy === false
+                ? "alert"
+                : interpretation.healthy === true
+                  ? "happy"
+                  : "curious"))
             : "neutral";
   const speaking = voice.speaking;
   const caption =
